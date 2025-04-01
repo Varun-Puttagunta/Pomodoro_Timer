@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .timer-circle {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        .timer-circle:hover {
+            transform: scale(1.02);
+        }
+        .phase-active {
+            border-bottom: 3px solid white;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white flex flex-col items-center justify-center p-4" 
+      style="background-image: url('https://images.pexels.com/photos/4145153/pexels-photo-4145153.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); 
+             background-size: cover; 
+             background-position: center;">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    
+    <div class="relative z-10 w-full max-w-md">
+        <h1 class="text-4xl font-bold text-center mb-8">Pomodoro Timer</h1>
+        
+        <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-8 shadow-xl">
+            <!-- Timer Display -->
+            <div class="timer-circle w-64 h-64 mx-auto rounded-full bg-white bg-opacity-10 flex items-center justify-center mb-8">
+                <div class="text-center">
+                    <div id="time-display" class="text-5xl font-mono font-bold">25:00</div>
+                    <div id="phase-indicator" class="text-xl mt-2">Work Time</div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex justify-center space-x-4 mb-8">
+                <button id="start-btn" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-lg font-semibold transition">
+                    <i class="fas fa-play mr-2"></i>Start
+                </button>
+                <button id="reset-btn" class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full text-lg font-semibold transition">
+                    <i class="fas fa-redo mr-2"></i>Reset
+                </button>
+            </div>
+
+            <!-- Settings -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Work (minutes)</label>
+                    <input id="work-time" type="number" min="1" max="60" value="25" 
+                           class="w-full bg-white bg-opacity-20 rounded p-2 text-center">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Break (minutes)</label>
+                    <input id="break-time" type="number" min="1" max="30" value="5" 
+                           class="w-full bg-white bg-opacity-20 rounded p-2 text-center">
+                </div>
+            </div>
+
+            <!-- Phase Tabs -->
+            <div class="flex border-b border-white border-opacity-20 mb-4">
+                <div id="work-tab" class="phase-active pb-2 px-4 cursor-pointer">Work</div>
+                <div id="break-tab" class="pb-2 px-4 cursor-pointer">Break</div>
+            </div>
+        </div>
+
+        <!-- Documentation Section -->
+        <div class="mt-8 bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6">
+            <h2 class="text-xl font-bold mb-4">How to Use</h2>
+            <ol class="list-decimal pl-5 space-y-2">
+                <li>Set your desired work and break durations</li>
+                <li>Click Start to begin the timer</li>
+                <li>The timer will automatically switch between work and break periods</li>
+                <li>Use Pause to temporarily stop the timer</li>
+                <li>Reset will return to the initial state</li>
+            </ol>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
